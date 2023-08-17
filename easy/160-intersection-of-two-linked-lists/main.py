@@ -10,15 +10,12 @@ class ListNode:
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode
                             ) -> Optional[ListNode]:
-        nodes = {}
-        while headA is not None:
-            nodes[headA] = True
-            headA = headA.next
-        while headB is not None:
-            if headB in nodes:
-                return headB
-            headB = headB.next
-        return None
+        first = headA
+        second = headB
+        while first != second:
+            first = headB if first is None else first.next
+            second = headA if second is None else second.next
+        return first
 
 
 if __name__ == "__main__":
