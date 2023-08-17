@@ -9,16 +9,13 @@ class ListNode:
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def wrapper(head):
-            if head.next is None:
-                return head, head
-            new_head, curr = wrapper(head.next)
-            curr.next = head
-            return new_head, curr.next
-        if head:
-            head, curr = wrapper(head)
-            curr.next = None
-        return head
+        curr, prev = head, None
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
+        return prev
 
 
 if __name__ == "__main__":
