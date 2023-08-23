@@ -1,10 +1,13 @@
 class Solution:
     def hammingWeight(self, n: int) -> int:
-        counter = 0
-        for i in range(32):
-            counter += n % 2
-            n >>= 1
-        return counter
+        if n > 0:
+            counter = 0
+            from math import log, ceil
+            for i in range(ceil(log(n, 2)) + 1):
+                counter += n % 2
+                n >>= 1
+            return counter
+        return 0
 
 
 if __name__ == '__main__':
