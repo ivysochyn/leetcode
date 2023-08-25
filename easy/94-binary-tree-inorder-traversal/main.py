@@ -13,6 +13,18 @@ class Solution:
         return self.inorderTraversal(root.left) + [root.val] + \
                 self.inorderTraversal(root.right) if root else []
 
+    def BFS(self, root: Optional[TreeNode]) -> List[int]:
+        res, stack = list(), list()
+        while True:
+            while root:
+                stack.append(root)
+                root = root.left
+            if not stack:
+                return res
+            node = stack.pop()
+            res.append(node.val)
+            root = node.right
+
 
 if __name__ == '__main__':
     solver = Solution()
